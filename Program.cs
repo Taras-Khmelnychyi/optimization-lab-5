@@ -193,8 +193,7 @@ namespace Lab2
             Thread t_comp5_3 = new Thread(Calc_comp5_3);
             t_comp5_3.Start();
 
-
-
+            //stage 6 process 
             t_comp5_2.Join();
             t_Y3cubed.Join();
             Thread t_comp6_1 = new Thread(Calc_comp6_1);
@@ -204,37 +203,13 @@ namespace Lab2
             Thread t_comp6_2 = new Thread(Calc_comp6_2);
             t_comp6_2.Start();
 
-
+            //Last stage
             t_comp6_1.Join();
             t_comp6_2.Join();
             Thread t_result = new Thread(Calc_result);
             t_result.Start();
             t_result.Join();
-            ////stage 6 process 
-            //List<Task> tasksTo_comp6_1 = new List<Task> { comp5_2, Y3_cubed };
-            //var comp6_1 = Task<MyMatrix>.Factory.ContinueWhenAll(tasksTo_comp6_1.ToArray(), (some) =>
-            //{
-            //    return comp5_2.Result + Y3_cubed.Result;
-            //});
-            //List<Task> tasksTo_comp6_2 = new List<Task> { Y3, comp4_2, comp5_3 };
-            //var comp6_2 = Task<MyMatrix>.Factory.ContinueWhenAll(tasksTo_comp6_2.ToArray(), (some) =>
-            //{
-            //    return Y3.Result + comp4_2.Result + comp5_3.Result;
-            //});
-
-            ////Last stage
-            //List<Task> lastTask = new List<Task> { comp6_1, comp6_2 };
-            //var result = Task<MyMatrix>.Factory.ContinueWhenAll(tasksTo_comp6_2.ToArray(), (some) =>
-            //{
-            //    return comp6_1.Result - comp6_2.Result;
-            //});
-
-            //Task tLast = Task.Factory.ContinueWhenAll(lastTask.ToArray(), (some) =>
-            //{
-            //    this.result = result.Result;
-            //});
-
-            //Task.WaitAll();
+            
             ResultStage();
         }
 
